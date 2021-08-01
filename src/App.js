@@ -6,6 +6,7 @@ import Footer from "./components/Footer"
 import 'bootstrap/dist/css/bootstrap.css'
 import LogIn from './pages/LogIn';
 import Logs from './pages/Logs';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
