@@ -1,12 +1,12 @@
 import React from "react"
-import Images from "../../pseudoDb/images"
+import logo from '../../pseudoDb/tracevax-logo.png'
 
 function Logo(props) {
-    const logoUrl = Images.images[0].url;
+
 
     return (
         <img 
-            src={logoUrl} 
+            src={logo} 
             alt="tracevax-logo"
             style={{padding : "5px"}}
             height={props.height}
