@@ -6,6 +6,7 @@ import Footer from "./components/Footer"
 import 'bootstrap/dist/css/bootstrap.css'
 import LogIn from './pages/LogIn';
 import Logs from './pages/Logs';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Header/>
           
           <Switch>
+            <Route exact path="/tracevax/signup" component={SignUp} />
             <Route exact path="/tracevax/logIn" component={LogIn} />
             <Route exact path="/tracevax/logs" component={Logs} />
             <Redirect from="" to="/tracevax/logs"/>
