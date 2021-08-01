@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import LogIn from './pages/LogIn';
 import Logs from './pages/Logs';
 
-
 function App() {
   return (
     <div className="App">
