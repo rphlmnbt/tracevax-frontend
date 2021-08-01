@@ -5,7 +5,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import 'bootstrap/dist/css/bootstrap.css'
 import LogIn from './pages/LogIn';
-
+import Logs from './pages/Logs';
 
 function App() {
   return (
@@ -15,7 +15,8 @@ function App() {
           
           <Switch>
             <Route exact path="/tracevax/logIn" component={LogIn} />
-            <Redirect from="" to="/tracevax/logIn"/>
+            <Route exact path="/tracevax/logs" component={Logs} />
+            <Redirect from="" to="/tracevax/logs"/>
           </Switch>
           <Footer />
       </Router>
