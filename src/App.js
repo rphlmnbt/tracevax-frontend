@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import 'bootstrap/dist/css/bootstrap.css'
+import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Logs from './pages/Logs';
-import SignUp from './pages/SignUp';
+
 
 function App() {
   return (
