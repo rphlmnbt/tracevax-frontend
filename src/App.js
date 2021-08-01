@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import 'bootstrap/dist/css/bootstrap.css'
-
+import LogIn from './pages/LogIn';
 import Logs from './pages/Logs';
 
 
@@ -15,6 +15,7 @@ function App() {
           <Header/>
           
           <Switch>
+            <Route exact path="/tracevax/logIn" component={LogIn} />
             <Route exact path="/tracevax/logs" component={Logs} />
             <Redirect from="" to="/tracevax/logs"/>
           </Switch>
