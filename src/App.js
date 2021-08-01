@@ -8,7 +8,6 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Logs from './pages/Logs';
 
-
 function App() {
   return (
     <div className="App">
