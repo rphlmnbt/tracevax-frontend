@@ -1,7 +1,8 @@
 import React from "react"
-import logo from "../../pseudoDb/tracevax-logo.png"
+import logo from '../../pseudoDb/tracevax-logo.png'
 
 function Logo(props) {
+
 
     return (
         <img 
