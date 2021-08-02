@@ -1,10 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Formik} from "formik"
 import * as yup from "yup"
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
+import AuthService from "../services/auth.service.js"
 import "../styles/pages/SignUp.css"
+import { useHistory } from 'react-router-dom';
 
 const schema = yup.object().shape({
 
@@ -18,14 +20,14 @@ const schema = yup.object().shape({
     last_name: yup.string()
                 .max(50, 'Too Long!')
                 .required('Required'),
+    contact_number: yup.number()
+                .min(1, "Invalid")
+                .required('Required'),
     gender: yup.string()
                 .required("Required"),
-    birth_date: yup.string()
-                .required('Required'),
-    contact_number: yup.number()
-                .min(100000000, "Invalid")
-                .required('Required'),
     civil_status: yup.string()
+                .required('Required'),
+    birth_date: yup.string()
                 .required('Required'),
     home_address: yup.string()
                 .min(4, "Please enter at least 4 characters.")
@@ -35,10 +37,36 @@ const schema = yup.object().shape({
 
 function SignUp() {
     const formRef = useRef()
+    const history = useHistory();
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => {
+        setShow(false)
+        history.push("/tracevax/login")
+    };
+    const handleShow = () => setShow(true);
     const register = () => {
-        console.log(formRef.current.values );
         
+        AuthService.register(
+            formRef.current.values.email, 
+            formRef.current.values.password, 
+            formRef.current.values.first_name, 
+            formRef.current.values.last_name,
+            formRef.current.values.contact_number, 
+            formRef.current.values.gender, 
+            formRef.current.values.civil_status, 
+            formRef.current.values.birth_date,
+            formRef.current.values.home_address)
+            .then(response => {
+                console.log(response.status);
+                if (response.status === 200) {
+                    handleShow()
+                }
+            })
+            .catch(e => {
+                console.log(e);
+            }
+        );
     };
 
     return (
@@ -302,6 +330,17 @@ function SignUp() {
                             </Form>
                         </Col>
                     </Row>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Sign Up Success!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Redirecting to Log In Page</Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Container>
             )}
         </Formik>
