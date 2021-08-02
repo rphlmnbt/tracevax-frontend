@@ -1,0 +1,24 @@
+.btn.submit-btn {
+    font-family:'Raleway',sans-serif; 
+    color: #fff;
+    background-color: #41ad49;
+    border-color: #41ad49;
+    border-radius: 0%;
+}
+
+.form-control.form-control {
+    border-radius: 0%;
+}
+
+p.form-title {
+    font-family:'Raleway',sans-serif; 
+    letter-spacing: 1px;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.extend-height {
+    min-height: calc(100vh - 311px);
+}
+

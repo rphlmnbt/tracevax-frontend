@@ -1,0 +1,11 @@
+p.container-title {
+    font-family:'Raleway',sans-serif; 
+    letter-spacing: 1px;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.extend-height {
+    min-height: calc(100vh - 311px);
+}
