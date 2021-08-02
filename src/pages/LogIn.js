@@ -1,11 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Formik } from "formik"
 import * as yup from "yup"
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import "../styles/pages/LogIn.css"
-import { LinkContainer } from 'react-router-bootstrap'
+import AuthService from "../services/auth.service.js"
+import { useHistory } from 'react-router-dom';
 
 
 const schema = yup.object().shape({
@@ -17,9 +18,27 @@ const schema = yup.object().shape({
 
 
 function LogIn() {
+    localStorage.removeItem('user')
     const formRef = useRef()
+    const history = useHistory();
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const logIn = () => {
-    
+        AuthService.login(formRef.current.values.email, formRef.current.values.password)
+          .then(response => {
+            console.log(response)
+            if (response.accessToken){
+                history.push("/tracevax/qrcodedisplay")
+                localStorage.setItem("accessToken", response.accessToken)
+            }
+          })
+          .catch(e => {
+            console.log(e);
+            handleShow()
+          });
     };
 
 
@@ -76,9 +95,6 @@ function LogIn() {
                                         placeholder="Enter Password"
                                     />
                                 </Form.Group>
-                                {/* <LinkContainer to="/tracevax/qrcodedisplay">
-                                    
-                                </LinkContainer> */}
                                 <Button 
                                         variant="primary btn-block" 
                                         type="submit" 
@@ -86,7 +102,6 @@ function LogIn() {
                                     >
                                         Log In
                                 </Button>
-
                                 <div className="mt-3">
                                     <small>don't have an account yet?</small> 
                                     <small className="login ml-2">Sign Up</small>
@@ -97,6 +112,17 @@ function LogIn() {
                             </Form>
                         </Col>
                     </Row>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Log In Failed</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Please make sure your credentials are correct.</Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Container>
             )}
         </Formik>

@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/tracevax/signup" component={SignUp} />
             <Route exact path="/tracevax/logIn" component={LogIn} />
             <Route exact path="/tracevax/logs" component={Logs} />
-            <Redirect from="" to="/tracevax/logs"/>
+            <Redirect from="" to="/tracevax/logIn"/>
           </Switch>
           <Footer />
       </Router>
