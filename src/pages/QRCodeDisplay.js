@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, {useState} from 'react';
 import QRCode from 'qrcode.react';
 import {Button, Container, Row, Col } from "react-bootstrap";
 import "../styles/pages/QRCodeDisplay.css"
@@ -15,9 +14,11 @@ const downloadQR = () => {
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
-  };
+};
 
 function QRCodeDisplay() {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+    console.log(user.uuid)
     return (
         <Container className="extend-height py-5">
             <Row className="align-items-center justify-content-center">
@@ -25,8 +26,8 @@ function QRCodeDisplay() {
                     
                         <p className="container-title">QR Code</p>
                         <QRCode
-                            id="2061234567"
-                            value="2061234567"
+                            id="qrcode"
+                            value={user.uuid}
                             size={290}
                             level={"H"}
                             includeMargin={true}

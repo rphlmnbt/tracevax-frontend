@@ -36,6 +36,7 @@ const schema = yup.object().shape({
 })
 
 function SignUp() {
+    localStorage.removeItem('user')
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
