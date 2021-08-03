@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Logs from './pages/Logs';
 import QRCodeDisplay from './pages/QRCodeDisplay';
+import EditUser from './pages/EditUser';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/tracevax/signup" component={SignUp} />
             <Route exact path="/tracevax/logIn" component={LogIn} />
             <Route exact path="/tracevax/logs" component={Logs} />
+            <Route exact path="/tracevax/edituser" component={EditUser} />
             <Redirect from="" to="/tracevax/logIn"/>
           </Switch>
           <Footer />
