@@ -9,6 +9,7 @@ import "../styles/pages/EditUser.css"
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from "../schemas/edituser.schema"
+import UploadImage from '../components/editUserComponents/UploadImage.js';
 
 function EditUser() {
     console.log(AuthService.getCurrentUser().uuid)
@@ -281,22 +282,7 @@ function EditUser() {
                                         </Form.Group>
                                     </Col>
                                 </Row>
-                                <Row className="g-2">
-                                    <Col md>
-                                        <Form.Group controlId="formFile" className="mb-3">
-                                            <Form.Label>Upload Vaccination Card</Form.Label>
-                                            <Form.Control type="file" />
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                                <Row className="g-2">
-                                    <Col md>
-                                        <Form.Group controlId="formFile" className="mb-3">
-                                            <Form.Label>Upload Valid ID</Form.Label>
-                                            <Form.Control type="file" />
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
+                                <UploadImage />
                                 <br />
                                 <Button 
                                     variant="primary btn-block" 
