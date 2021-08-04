@@ -1,24 +1,14 @@
 import React, { useRef, useState } from 'react'
 import { Formik } from "formik"
-import * as yup from "yup"
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import "../styles/pages/LogIn.css"
 import AuthService from "../services/auth.service.js"
 import { useHistory } from 'react-router-dom';
-
-
-const schema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Required'),
-    password: yup.string()
-                .min(4, "Please enter at least 4 characters.")
-                .required("Required"),
-});
-
+import schema from "../schemas/login.schema"
 
 function LogIn() {
-    localStorage.removeItem('user')
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import QRCode from 'qrcode.react';
 import {Button, Container, Row, Col } from "react-bootstrap";
+import { LinkContainer } from 'react-router-bootstrap'
 import "../styles/pages/QRCodeDisplay.css"
 
 const downloadQR = () => {
@@ -39,7 +40,15 @@ function QRCodeDisplay() {
                                 >
                                     Download QR Code
                         </Button>
-                    
+                        <LinkContainer to="/tracevax/edituser">
+                            <Button 
+                                        variant="primary btn-block" 
+                                        className="submit-btn mb-2"
+                                    >
+                                        Edit User Details
+                            </Button>
+                        </LinkContainer>
+                        
                 </Col>
             </Row>
             

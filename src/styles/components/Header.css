@@ -15,11 +15,10 @@ a.btn.custom-btn.active.btn-primary {
     background-color: rgba(0,0,0,0);
 }
 
-div#basic-navbar-nav div a.item-style.nav-link {
-    color: rgba(0, 0, 0, 0.8)
+div.mr-auto.navbar-nav a.item-style.nav-link {
+    color: #3380CD;
+    font-weight: 500;
 }
-
-
 
 a.dropdown-item.active, a.dropdown-item:active {
     background-color: rgb(85,85,85);

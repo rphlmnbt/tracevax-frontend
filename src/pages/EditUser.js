@@ -1,28 +1,30 @@
 import React, { useRef, useState } from 'react'
 import { Formik} from "formik"
+
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import AuthService from "../services/auth.service.js"
-import "../styles/pages/SignUp.css"
+import "../styles/pages/EditUser.css"
 import { useHistory } from 'react-router-dom';
-import schema from '../schemas/signup.schema';
+import { LinkContainer } from 'react-router-bootstrap'
+import schema from "../schemas/edituser.schema"
 
-
-function SignUp() {
-    localStorage.removeItem('user')
+function EditUser() {
+    console.log(AuthService.getCurrentUser().uuid)
+    const uuid_creds =  AuthService.getCurrentUser().uuid;
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
         setShow(false)
-        history.push("/tracevax/login")
+        history.push("/tracevax/qrcodedisplay")
     };
     const handleShow = () => setShow(true);
-    const register = () => {
+    const updateUser = () => {
         
-        AuthService.register(
+        AuthService.update(
             formRef.current.values.email, 
             formRef.current.values.password, 
             formRef.current.values.first_name, 
@@ -31,7 +33,8 @@ function SignUp() {
             formRef.current.values.gender, 
             formRef.current.values.civil_status, 
             formRef.current.values.birth_date,
-            formRef.current.values.home_address)
+            formRef.current.values.home_address,
+            uuid_creds)
             .then(response => {
                 console.log(response.status);
                 if (response.status === 200) {
@@ -47,18 +50,9 @@ function SignUp() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={register}
+            onSubmit={updateUser}
             innerRef = {formRef}
             initialValues={{
-                email: "",
-                password: "",
-                first_name: "",
-                last_name: "",
-                gender:"",
-                birth_date:"",       
-                contact_number: "",
-                civil_status: "",
-                home_address: ""
             }}
         >
             {({
@@ -74,7 +68,7 @@ function SignUp() {
                     <Row className="align-items-center justify-content-center">
                         <Col  md={8} sm={12} className="text-center mt-5 shadow p-3 mb-5 bg-white">
                             <div className="pb-3 mx-auto" >
-                                <p className="form-title">Sign Up</p><br />
+                                <p className="form-title">Edit User Details</p><br />
                                 <IconContext.Provider value={{size:"80px", color:"#41ad49"}}>
                                     <FaUserCircle />
                                 </IconContext.Provider>
@@ -287,27 +281,46 @@ function SignUp() {
                                         </Form.Group>
                                     </Col>
                                 </Row>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group controlId="formFile" className="mb-3">
+                                            <Form.Label>Upload Vaccination Card</Form.Label>
+                                            <Form.Control type="file" />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group controlId="formFile" className="mb-3">
+                                            <Form.Label>Upload Valid ID</Form.Label>
+                                            <Form.Control type="file" />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
                                 <br />
                                 <Button 
                                     variant="primary btn-block" 
                                     type="submit" 
                                     className="submit-btn"
                                 >
-                                    Sign Up
+                                    Apply Changes
                                 </Button>
-
-                                <div>
-                                    <small>already have an account?</small> 
-                                    <a href="/tracevax/login"><small className="login ml-2">Log In</small></a>
-                                </div>
+                                <LinkContainer to="/tracevax/qrcodedisplay">
+                                    <Button 
+                                        variant="primary btn-block"  
+                                        className="submit-btn"
+                                    >
+                                        Back to QR Code Display
+                                    </Button>
+                                </LinkContainer>
                             </Form>
                         </Col>
                     </Row>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
-                        <Modal.Title>Sign Up Success!</Modal.Title>
+                        <Modal.Title>Edit Success!</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>Redirecting to Log In Page</Modal.Body>
+                        <Modal.Body>Redirecting to QR Code Page</Modal.Body>
                         <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
@@ -321,4 +334,4 @@ function SignUp() {
     )
 }
 
-export default SignUp
+export default EditUser
