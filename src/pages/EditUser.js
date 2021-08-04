@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Formik} from "formik"
-import * as yup from "yup"
+
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
@@ -8,33 +8,7 @@ import AuthService from "../services/auth.service.js"
 import "../styles/pages/EditUser.css"
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
-
-const schema = yup.object().shape({
-
-    email: yup.string().email('Invalid email').nullable(),
-    password: yup.string()
-                .min(4, "Please enter at least 4 characters.")
-                .nullable(),
-    first_name: yup.string()
-                .max(50, 'Too Long!')
-                .nullable(),
-    last_name: yup.string()
-                .max(50, 'Too Long!')
-                .nullable(),
-    contact_number: yup.number()
-                .min(1, "Invalid")
-                .nullable(),
-    gender: yup.string()
-                .nullable(),
-    civil_status: yup.string()
-                    .nullable(),
-    birth_date: yup.string()
-                    .nullable(),
-    home_address: yup.string()
-                .min(4, "Please enter at least 4 characters.")
-                .nullable(),
-                
-})
+import schema from "../schemas/edituser.schema"
 
 function EditUser() {
     console.log(AuthService.getCurrentUser().uuid)
@@ -192,7 +166,6 @@ function EditUser() {
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Male" 
-                                                                onclick="selectOnlyThis(this)"
                                                                 value={"Male"} 
                                                                 onChange={handleChange}
                                                                 isValid={touched.gender && !errors.gender} 
@@ -204,7 +177,6 @@ function EditUser() {
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Female" 
-                                                                onclick="selectOnlyThis(this)"
                                                                 value={"Female"} 
                                                                 onChange={handleChange}
                                                                 isValid={touched.gender && !errors.gender} 
@@ -306,6 +278,22 @@ function EditUser() {
                                             <Form.Control.Feedback type="invalid">
                                                 {errors.home_address}
                                             </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group controlId="formFile" className="mb-3">
+                                            <Form.Label>Upload Vaccination Card</Form.Label>
+                                            <Form.Control type="file" />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group controlId="formFile" className="mb-3">
+                                            <Form.Label>Upload Valid ID</Form.Label>
+                                            <Form.Control type="file" />
                                         </Form.Group>
                                     </Col>
                                 </Row>

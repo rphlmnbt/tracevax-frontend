@@ -35,7 +35,7 @@ const login = (email, password) => {
 
 const update = (email, password, first_name, last_name,contact_number, gender, 
   civil_status, birth_date, home_address, uuid_creds) => {
-  return axios.put(API_URL + "update/" + uuid_creds, {
+  return axios.put(`${API_URL}update/${uuid_creds}`, {
     email,
     password,
     first_name,

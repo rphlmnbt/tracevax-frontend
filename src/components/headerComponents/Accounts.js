@@ -25,12 +25,21 @@ function Accounts() {
 
     return (
         <span className="px-4">
-            <LinkContainer to="/tracevax/login">
+            { user ?  <LinkContainer to="/tracevax/login">
                 <Button className="custom-btn" onClick={handeLogout}>
                     <IconContext.Provider value={{size:"30px", style: {marginLeft: "10px", marginRight: "10px"}}}>
                         <FaUserCircle />
                     </IconContext.Provider>
-                        {user ? "Log Out" : "Log In"}
+                    Log Out
+                </Button>
+            </LinkContainer> : 
+            <span>
+            <LinkContainer to="/tracevax/login">
+                <Button className="custom-btn">
+                    <IconContext.Provider value={{size:"30px", style: {marginLeft: "10px", marginRight: "10px"}}}>
+                        <FaUserCircle />
+                    </IconContext.Provider>
+                    Log In
                 </Button>
             </LinkContainer>
             <LinkContainer to="/tracevax/signup">
@@ -41,6 +50,9 @@ function Accounts() {
                     Sign Up
                 </Button>
             </LinkContainer>
+            </span>
+            }
+            
         </span>
 
     )

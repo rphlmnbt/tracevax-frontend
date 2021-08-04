@@ -1,39 +1,13 @@
 import React, { useRef, useState } from 'react'
 import { Formik} from "formik"
-import * as yup from "yup"
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import AuthService from "../services/auth.service.js"
 import "../styles/pages/SignUp.css"
 import { useHistory } from 'react-router-dom';
+import schema from '../schemas/signup.schema';
 
-const schema = yup.object().shape({
-
-    email: yup.string().email('Invalid email').required('Required'),
-    password: yup.string()
-                .min(4, "Please enter at least 4 characters.")
-                .required("Required"),
-    first_name: yup.string()
-                .max(50, 'Too Long!')
-                .required('Required'),
-    last_name: yup.string()
-                .max(50, 'Too Long!')
-                .required('Required'),
-    contact_number: yup.number()
-                .min(1, "Invalid")
-                .required('Required'),
-    gender: yup.string()
-                .required("Required"),
-    civil_status: yup.string()
-                .required('Required'),
-    birth_date: yup.string()
-                .required('Required'),
-    home_address: yup.string()
-                .min(4, "Please enter at least 4 characters.")
-                .required('Required'),
-                
-})
 
 function SignUp() {
     localStorage.removeItem('user')
@@ -198,7 +172,6 @@ function SignUp() {
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Male" 
-                                                                onclick="selectOnlyThis(this)"
                                                                 value={"Male"} 
                                                                 onChange={handleChange}
                                                                 isValid={touched.gender && !errors.gender} 
@@ -210,7 +183,6 @@ function SignUp() {
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Female" 
-                                                                onclick="selectOnlyThis(this)"
                                                                 value={"Female"} 
                                                                 onChange={handleChange}
                                                                 isValid={touched.gender && !errors.gender} 
