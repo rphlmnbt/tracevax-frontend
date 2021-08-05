@@ -1,7 +1,7 @@
-import React from "react"
-import { Col } from "react-bootstrap"
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"
-import { IconContext } from "react-icons/lib"
+import React from 'react'
+import { Col } from 'react-bootstrap'
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { IconContext } from 'react-icons/lib'
 
 function SocialIcons() {
     return(

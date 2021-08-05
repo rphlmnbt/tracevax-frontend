@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import QRCode from 'qrcode.react';
-import {Button, Container, Row, Col } from "react-bootstrap";
+import {Button, Container, Row, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import "../styles/pages/QRCodeDisplay.css"
+import '../styles/pages/QRCodeDisplay.css'
 
 const downloadQR = () => {
-    const canvas = document.getElementById("2061234567");
+    const canvas = document.getElementById('2061234567');
     const pngUrl = canvas
-      .toDataURL("image/png")
-      .replace("image/png", "image/octet-stream");
-    let downloadLink = document.createElement("a");
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
+    let downloadLink = document.createElement('a');
     downloadLink.href = pngUrl;
-    downloadLink.download = "2061234567.png";
+    downloadLink.download = '2061234567.png';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);

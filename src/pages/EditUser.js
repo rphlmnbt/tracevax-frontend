@@ -1,14 +1,13 @@
 import React, { useRef, useState } from 'react'
-import { Formik} from "formik"
-
+import { Formik} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
-import AuthService from "../services/auth.service.js"
-import "../styles/pages/EditUser.css"
+import AuthService from '../services/auth.service.js'
+import '../styles/pages/EditUser.css'
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
-import schema from "../schemas/edituser.schema"
+import schema from '../schemas/edituser.schema'
 import UploadImage from '../components/editUserComponents/UploadImage.js';
 
 function EditUser() {
@@ -20,7 +19,7 @@ function EditUser() {
 
     const handleClose = () => {
         setShow(false)
-        history.push("/tracevax/qrcodedisplay")
+        history.push('/tracevax/qrcodedisplay')
     };
     const handleShow = () => setShow(true);
     const updateUser = () => {

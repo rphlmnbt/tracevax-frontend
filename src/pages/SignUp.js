@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { Formik} from "formik"
-import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
+import { Formik} from 'formik'
+import { Form, Button, Container, Row, Col, Modal } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
-import AuthService from "../services/auth.service.js"
-import "../styles/pages/SignUp.css"
+import AuthService from '../services/auth.service.js'
+import '../styles/pages/SignUp.css'
 import { useHistory } from 'react-router-dom';
 import schema from '../schemas/signup.schema';
 
@@ -17,7 +17,7 @@ function SignUp() {
 
     const handleClose = () => {
         setShow(false)
-        history.push("/tracevax/login")
+        history.push('/tracevax/login')
     };
     const handleShow = () => setShow(true);
     const register = () => {

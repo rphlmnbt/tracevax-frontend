@@ -1,23 +1,27 @@
-import React, { useState } from "react"
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
-import axios from "axios";
-import authService from "../../services/auth.service";
+import React, { useState } from 'react'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import axios from 'axios';
+import authService from '../../services/auth.service';
 
 function UploadImage() {
+    const API_URL =  process.env.REACT_APP_BACKEND_URL + '/api/image/';
+
     const [id, setID] = useState()
     const [vaccine, setVaccine] = useState()
+
     const uuid_creds = authService.getCurrentUser().uuid
+
     const handleIDUpload = (e) => {
-        const fd = new FormData()
-        fd.append("uuid", uuid_creds)
-        fd.append('id',id)
+        const formData = new FormData()
+        formData.append('uuid', uuid_creds)
+        formData.append('id',id)
         axios({
-            url: 'http://localhost:8080/api/image/id',
-            method: "POST",
+            url: API_URL + 'id',
+            method: 'POST',
             headers: {
-                "content-type": "multipart/form-data"
+                'content-type': 'multipart/form-data'
             },
-            data: fd
+            data: formData
         }).then((res) => {
             console.log(res)
         })
@@ -28,16 +32,16 @@ function UploadImage() {
     }
 
     const handleVaccineUpload = (e) => {
-        const fd = new FormData()
-        fd.append("uuid", uuid_creds)
-        fd.append('vaccinecard',vaccine)
+        const formData = new FormData()
+        formData.append('uuid', uuid_creds)
+        formData.append('vaccinecard',vaccine)
         axios({
-            url: 'http://localhost:8080/api/image/vaccinecard',
-            method: "POST",
+            url: API_URL + 'vaccinecard',
+            method: 'POST',
             headers: {
-                "content-type": "multipart/form-data"
+                'content-type': 'multipart/form-data'
             },
-            data: fd
+            data: formData
         }).then((res) => {
             console.log(res)
         })
