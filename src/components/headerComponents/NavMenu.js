@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react"
-import { Navbar, Nav, NavDropdown } from "react-bootstrap"
+import React, {useState, useEffect} from 'react'
+import { Navbar, Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import Logo from "./Logo"
-import Accounts from "./Accounts"
-import AuthService from "../../services/auth.service"
-import { useLocation } from "react-router"
+import Logo from './Logo'
+import Accounts from './Accounts'
+import AuthService from '../../services/auth.service'
+import { useLocation } from 'react-router'
 
 function NavMenu() {
     const [user, setUser] = useState(undefined);

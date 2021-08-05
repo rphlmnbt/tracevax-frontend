@@ -1,5 +1,5 @@
-import React from "react"
-import { Container, Col, Button, Form } from "react-bootstrap"
+import React from 'react'
+import { Container, Col, Button, Form } from 'react-bootstrap'
 
 function Subscribe() {
     return(

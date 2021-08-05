@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react"
-import { Button } from "react-bootstrap"
-import { FaUserPlus, FaUserCircle } from "react-icons/fa"
-import { IconContext } from "react-icons/lib"
-import { LinkContainer } from "react-router-bootstrap"
-import { useLocation } from "react-router-dom"
-import AuthService from "../../services/auth.service"
+import React, { useState, useEffect } from 'react'
+import { Button } from 'react-bootstrap'
+import { FaUserPlus, FaUserCircle } from 'react-icons/fa'
+import { IconContext } from 'react-icons/lib'
+import { LinkContainer } from 'react-router-bootstrap'
+import { useLocation } from 'react-router-dom'
+import AuthService from '../../services/auth.service'
 
 
 function Accounts() {

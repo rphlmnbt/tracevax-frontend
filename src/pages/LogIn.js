@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
-import { Formik } from "formik"
-import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
+import { Formik } from 'formik'
+import { Form, Button, Container, Row, Col, Modal } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
-import "../styles/pages/LogIn.css"
-import AuthService from "../services/auth.service.js"
+import '../styles/pages/LogIn.css'
+import AuthService from '../services/auth.service.js'
 import { useHistory } from 'react-router-dom';
-import schema from "../schemas/login.schema"
+import schema from '../schemas/login.schema'
 
 function LogIn() {
     const formRef = useRef()
@@ -21,8 +21,8 @@ function LogIn() {
           .then(response => {
             console.log(response)
             if (response.accessToken){
-                history.push("/tracevax/qrcodedisplay")
-                localStorage.setItem("accessToken", response.accessToken)
+                history.push('/tracevax/qrcodedisplay')
+                localStorage.setItem('accessToken', response.accessToken)
             }
           })
           .catch(e => {
@@ -38,8 +38,8 @@ function LogIn() {
             onSubmit={logIn}
             innerRef = {formRef}
             initialValues={{
-                email: "",
-                password: ""
+                email: '',
+                password: ''
             }}
         >
             {({

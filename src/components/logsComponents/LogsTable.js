@@ -1,11 +1,11 @@
-import React, {useMemo} from "react";
+import React, {useMemo} from 'react';
 import { useTable, useSortBy, usePagination } from 'react-table'
-import { Button, Row, Col } from "react-bootstrap"
+import { Button, Row, Col } from 'react-bootstrap'
 import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS} from './columns'
 import '../../styles/pages/Logs.css'
-import { FaArrowUp, FaArrowDown, FaArrowRight, FaArrowLeft } from "react-icons/fa"
-import { IconContext } from "react-icons/lib"
+import { FaArrowUp, FaArrowDown, FaArrowRight, FaArrowLeft } from 'react-icons/fa'
+import { IconContext } from 'react-icons/lib'
 
 export const LogsTable = () => {
 
