@@ -5,13 +5,13 @@ import { LinkContainer } from 'react-router-bootstrap'
 import '../styles/pages/QRCodeDisplay.css'
 
 const downloadQR = () => {
-    const canvas = document.getElementById('2061234567');
+    const canvas = document.getElementById('qrcode');
     const pngUrl = canvas
       .toDataURL('image/png')
       .replace('image/png', 'image/octet-stream');
     let downloadLink = document.createElement('a');
     downloadLink.href = pngUrl;
-    downloadLink.download = '2061234567.png';
+    downloadLink.download = `qrcode.png`;
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
