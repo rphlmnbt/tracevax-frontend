@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios'
 
-const API_URL =  process.env.REACT_APP_BACKEND_URL + "/api/auth/";
+const API_URL =  process.env.REACT_APP_BACKEND_URL + '/api/auth/'
 
 
 const register = (email, password, first_name, last_name,contact_number, gender, 
                     civil_status, birth_date, home_address) => {
-  return axios.post(API_URL + "signup", {
+  return axios.post(API_URL + 'signup', {
     email,
     password,
     first_name,
@@ -20,13 +20,13 @@ const register = (email, password, first_name, last_name,contact_number, gender,
 
 const login = (email, password) => {
   return axios
-    .post(API_URL + "signin", {
+    .post(API_URL + 'signin', {
       email,
       password,
     })
     .then((response) => {
       if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem('user', JSON.stringify(response.data));
       }
 
       return response.data;
@@ -49,11 +49,11 @@ const update = (email, password, first_name, last_name,contact_number, gender,
   };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem('user');
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  return JSON.parse(localStorage.getItem('user'));
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export

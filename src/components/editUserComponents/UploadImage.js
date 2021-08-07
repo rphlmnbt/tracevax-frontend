@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import axios from 'axios';
 import authService from '../../services/auth.service';
+import idService from '../../services/id.service';
+import vaccinecardService from '../../services/vaccinecard.service';
 
 function UploadImage() {
     const API_URL =  process.env.REACT_APP_BACKEND_URL + '/api/image/';
@@ -10,6 +12,30 @@ function UploadImage() {
     const [vaccine, setVaccine] = useState()
 
     const uuid_creds = authService.getCurrentUser().uuid
+
+    const createVaccineCardRecord = () => {
+        const destination = 'public/images/vaccinecard/'
+        const filename = `vaccinecard-${uuid_creds}.jpg`
+        const src = destination+filename;
+        vaccinecardService.create(src,uuid_creds)
+        .then(res => {
+            console.log(res)
+        }).catch(e => {
+            console.log(e)
+        })
+    }
+
+    const createIDRecord = () => {
+        const destination = 'public/images/id/'
+        const filename = `id-${uuid_creds}.jpg`
+        const src = destination+filename;
+        idService.create(src,uuid_creds)
+        .then(res => {
+            console.log(res)
+        }).catch(e => {
+            console.log(e)
+        })
+    }
 
     const handleIDUpload = (e) => {
         const formData = new FormData()
@@ -23,6 +49,7 @@ function UploadImage() {
             },
             data: formData
         }).then((res) => {
+            createIDRecord()
             console.log(res)
         })
     }
@@ -43,6 +70,7 @@ function UploadImage() {
             },
             data: formData
         }).then((res) => {
+            createVaccineCardRecord()
             console.log(res)
         })
     }
